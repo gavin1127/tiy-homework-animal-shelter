@@ -44,7 +44,7 @@ public class Main {
                      menu.showAnimalDetails(animals, i);
                  }
 
-                //fffmenu.showAnimalDetails(animals, i);
+                //menu.showAnimalDetails(animals, i);
             }
             else if (action == MenuService.EDIT_ANIMAL){
                 System.out.println("-- Edit an Animal --");
@@ -86,6 +86,7 @@ public class Main {
         animals.add(new Animal("billie","bird","eagle","is scary"));
         animals.add(new Animal("nugget","cat","mixed","is a nugget"));
         animals.add(new Animal("smelly","dog","mutt","smells bad"));
+        animals.add(new Animal("ugly","dog","mutt","is ugly"));
 
     }
 }
