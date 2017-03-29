@@ -1,28 +1,24 @@
-import java.util.ArrayList;
-
 /**
- * Created by Gavin on 3/24/17.
+ * Created by Gavin on 3/29/17.
  */
 public class Animal {
-    ArrayList<String> animalList = new ArrayList<>();
     String Name;
     String Species;
     String Breed;
     String Description;
 
-    public Animal(String Name, String Species, String Breed, String Description){
+    public Animal(String Name, String Species, String Breed, String Description) {
         this.Name = Name;
         this.Species = Species;
         this.Breed = Breed;
         this.Description = Description;
     }
-
-    public String getBreed() {
-        return Breed;
+    public String getName() {
+        return Name;
     }
 
-    public void setBreed(String breed) {
-        Breed = breed;
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getSpecies() {
@@ -33,6 +29,14 @@ public class Animal {
         Species = species;
     }
 
+    public String getBreed() {
+        return Breed;
+    }
+
+    public void setBreed(String breed) {
+        Breed = breed;
+    }
+
     public String getDescription() {
         return Description;
     }
@@ -41,15 +45,4 @@ public class Animal {
         Description = description;
     }
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public ArrayList<String> getAnimalList() {
-        return animalList;
-    }
 }
