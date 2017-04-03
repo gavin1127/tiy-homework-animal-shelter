@@ -35,9 +35,12 @@ import static org.junit.Assert.assertThat;
          * then 1 is return
          */
         public void When1OnMenuThen1() {
+            //arrange
             Scanner scanner = new Scanner("1");
             MenuService menu = new MenuService(scanner);
+            //act
             int selection = menu.promptForMainMenu();
+            //assert
             assertThat(selection, equalTo(1));
         }
 
@@ -58,43 +61,6 @@ import static org.junit.Assert.assertThat;
             // Assert
             assertThat(selection, equalTo(2));
         }
-
-        @Test
-        public void When3OnMenuThen3() {
-            // Arrange
-            Scanner scanner = new Scanner("3");
-            MenuService menu = new MenuService(scanner);
-            // Act
-            int selection = menu.promptForMainMenu();
-
-            // Assert
-            assertThat(selection, equalTo(3));
-        }
-
-        @Test
-        public void When4OnMenuThen4() {
-            // Arrange
-            Scanner scanner = new Scanner("4");
-            MenuService menu = new MenuService(scanner);
-            // Act
-            int selection = menu.promptForMainMenu();
-
-            // Assert
-            assertThat(selection, equalTo(4));
-        }
-
-        @Test
-        public void When5OnMenuThen5() {
-            // Arrange
-            Scanner scanner = new Scanner("5");
-            MenuService menu = new MenuService(scanner);
-            // Act
-            int selection = menu.promptForMainMenu();
-
-            // Assert
-            assertThat(selection, equalTo(5));
-        }
-
         @Test
         public void When6OnMenuThen6() {
             // Arrange
@@ -143,21 +109,54 @@ import static org.junit.Assert.assertThat;
                                 "Select an option: "));
             }
         @Test
-        /**
-         * When main menu displayed
-         * Then menu includes "1) List Widgets"
-         */
-        public void whenMainMenuThenListAnimalsPrinted(){
+        public void whenAnimalListedThenAllAreShown(){
             // Arrange
-            Scanner scanner = new Scanner("1");
+            Scanner scanner = new Scanner("");
             MenuService menu = new MenuService(scanner);
 
             // Act
-            menu.promptForMainMenu();
+            menu.ShowAnimalList(animals);
 
             // Assert
-            assertThat(this.outputStream.toString(), containsString("1) List Animals"));
+            assertThat(outputStream.toString(), containsString("steve\t\tcat"));
+            assertThat(outputStream.toString(), containsString(" Bobby\t\tdog"));
+            assertThat(outputStream.toString(), containsString("billie\t\tbird"));
         }
+        @Test
+        public void whenQuitThenGoodbye(){
+            // Arrange
+            Scanner scanner = new Scanner("");
+            MenuService menu = new MenuService(scanner);
 
+            // Act
+            menu.sayQuitting();
+
+            // Assert
+            assertThat(outputStream.toString(), containsString("Quitting Animal Shelter"));
+        }
+        @Test
+        /**
+         * When creating a widget
+         * Then correct widget created
+         */
+        public void whenCreatingAnimalThenAnimalCreated() {
+            // Arrange
+            Scanner scanner = new Scanner("bill\n" +
+                    "dog\n" +
+                    "lab\n" +
+                    "is dog\n" );
+            MenuService menu = new MenuService(scanner);
+
+            // Act
+            Animal animal = menu.createAnimal();
+
+            // Assert
+
+            assertThat(animal.getName(), equalTo("bill"));
+            assertThat(animal.getSpecies(), equalTo("dog"));
+            assertThat(animal.getBreed(), equalTo("lab"));
+            assertThat(animal.getDescription(), equalTo("is dog"));
+
+        }
     }
 
