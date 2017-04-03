@@ -82,7 +82,7 @@ public class MenuService {
     }
 
     public void sayQuitting() {
-        System.out.println("Quitting Animal Shelter");
+        System.out.println("Quiting Animal Shelter");
     }
 
     public Animal createAnimal() {
@@ -90,9 +90,52 @@ public class MenuService {
         String species = waitForString("Species: ", true);
         String breed = waitForString("Breed(Optional): ", false);
         String description = waitForString("Add Description", true);
-        Main.animals.add(new Animal(name,species,breed,description));
+        Main.animals.add(new Animal(name, species, breed, description));
         System.out.println("\n" + "New Animal Added");
         return null;
+    }
+
+    public void sayInvalidReenter() {
+        System.out.println("invalid input");
+        System.out.println("try Again");
+    }
+
+    public void animalUpdate(Animal animal) {
+        String input = "";
+        input = waitForString(String.format("Name[%s]: ", animal.getName()), false);
+        if (!input.isEmpty()) {
+            animal.setName(input);
+        }
+        input = waitForString(String.format("Species[%s]: ", animal.getSpecies()), false);
+        if (!input.isEmpty()) {
+            animal.setSpecies(input);
+        }
+        input = waitForString(String.format("Breed[%s]: ", animal.getBreed()), false);
+        if (!input.isEmpty()) {
+            animal.setBreed(input);
+        }
+        input = waitForString(String.format("Description[%s]: ", animal.getDescription()), false);
+        if (!input.isEmpty()) {
+            animal.setDescription(input);
+
+        }
+    }
+
+    public void deleteAnimal() {
+        while (true) {
+            int i = waitForInt("What is the numeric ID of the animal you want to delete?");
+            showAnimalDetails(Main.animals, i - 1);
+            //System.out.println("Are you sure you want to delete this animal?:");
+            String answer = waitForString("Are you sure you want to delete this animal?:", true);
+            if (answer.equals("yes")) {
+                Main.animals.remove(i - 1);
+                System.out.println("Success: The animal has been deleted!");
+                break;
+            } else if (answer.equals("no")) {
+            } else {
+                System.out.println("Please enter a valid response");
+            }
+        }
     }
 }
 

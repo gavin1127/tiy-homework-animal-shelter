@@ -41,9 +41,15 @@ public class Main {
                 }
             }
             if (action == 4){
+                System.out.println("-- Edit an Animal --");
+                int i = menu.waitForInt("What is the numeric ID of the animal you want to edit?: ");
+                Animal animal = animals.get(i - 1);
+                menu.animalUpdate(animal);
+                System.out.println("Animal has been updated");
 
             }
             if (action == 5){
+                menu.deleteAnimal();
 
             }
             if (action == 6){
@@ -51,9 +57,8 @@ public class Main {
                 break;
 
             }
-            if (action > 6){
-                System.out.println("invalid input");
-                System.out.println("try Again");
+            if (action > 6 || action < 1){
+               menu.sayInvalidReenter();
             }
         }
     }
