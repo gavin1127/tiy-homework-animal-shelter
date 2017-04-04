@@ -22,16 +22,16 @@ public class Main {
         while (true) {
             int action = menu.promptForMainMenuSelection();
 
-            if (action == 1) {
+            if (action == menu.LIST_ANIMALS) {
                 System.out.println("--Animal List--");
                 menu.ShowAnimalList(animals);
             }
-            if (action == 2){
+            if (action == menu.CREATE_ANIMAL){
                 System.out.println("\n-- Create Animal --\n");
                 System.out.println("Fill out animal Requirements");
                 menu.createAnimal();
             }
-            if (action == 3){
+            if (action == menu.VIEW_ANIMAL_DETAIL){
                 int i = menu.waitForInt("What is the numeric ID of the animal you want to view?");
                 if (i > animals.size()){
                     System.out.println("Error: No animal with this number exist");
@@ -40,7 +40,7 @@ public class Main {
                     menu.showAnimalDetails(animals, i);
                 }
             }
-            if (action == 4){
+            if (action == menu.EDIT_ANIMAL){
                 System.out.println("-- Edit an Animal --");
                 int i = menu.waitForInt("What is the numeric ID of the animal you want to edit?: ");
                 Animal animal = animals.get(i - 1);
@@ -48,11 +48,11 @@ public class Main {
                 System.out.println("Animal has been updated");
 
             }
-            if (action == 5){
+            if (action == menu.DELETE_ANIMAL){
                 menu.deleteAnimal();
 
             }
-            if (action == 6){
+            if (action == menu.QUIT){
                 menu.sayQuitting();
                 break;
 

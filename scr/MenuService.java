@@ -5,7 +5,14 @@ import java.util.Scanner;
  * Created by Gavin on 3/28/17.
  */
 public class MenuService {
+    public static final int LIST_ANIMALS = 1;
+    public static final int CREATE_ANIMAL = 2;
+    public static final int VIEW_ANIMAL_DETAIL = 3;
+    public static final int EDIT_ANIMAL = 4;
+    public static final int DELETE_ANIMAL = 5;
+    public static final int QUIT = 6;
     Scanner scanner;
+
 
     public MenuService(Scanner scanner) {
         this.scanner = scanner;
